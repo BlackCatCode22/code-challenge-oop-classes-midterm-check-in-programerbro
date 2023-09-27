@@ -1,70 +1,51 @@
 #include <iostream>
-#include <string>
-#include <vector>
+# include<list>
+#include<vector>
+#include<string>
+
+using namespace std;
 
 class Animal {
-public:
-    Animal(const std::string& name, const std::string& species)
-        : name_(name), species_(species) {
-        numOfAnimals++;
-    }
-
-    static int numOfAnimals;
-
-    std::string getName() const {
-        return name_;
-    }
-
-    std::string getSpecies() const {
-        return species_;
-    }
 
 private:
-    std::string name_;
-    std::string species_;
-};
-
-int Animal::numOfAnimals = 0;
-
-class Hyena : public Animal {
+    string name = "";
+    char sex ;
+    int age;
+    string habitat= "";
+    string color = "";
+    double weight ;
+    string species = "";
 public:
-    Hyena(const std::string& name)
-        : Animal(name, "Hyena") {}
+    int numOfAnimals = 0;
+    Animal(const string& name, string habitat, const string& species,string color,char sex,int age, double weight)
+    :name(name),species(species),sex(sex){}
 
-    static std::vector<std::string> hyenaNames;
 
-    static std::string assignName() {
-        if (hyenaNames.empty()) {
-            return "No more hyena names available";
-        }
+    };
 
-        std::string name = hyenaNames.back();
-        hyenaNames.pop_back();
-        return name;
+
+class Hyena: public Animal{
+public:
+    Hyena(string name,string habitat,string color,string species,char sex,int age,double weight):Animal(name,habitat,color,species,sex,age,weight){
+name = Hyena
+
     }
 };
 
-std::vector<std::string> Hyena::hyenaNames = {
-    "Shenzi", "Banzai", "Ed", "Zig", "Bud",
-    "Lou", "Kamari", "Wema", "Nne", "Madoa",
-    "Prince Nevarah"
-};
 
-int main() {
-    // Creating Animal objects
-    Animal lion("Simba", "Lion");
-    Animal elephant("Dumbo", "Elephant");
 
-    // Accessing and displaying the number of animals
-    std::cout << "Number of animals created: " << Animal::numOfAnimals << std::endl;
 
-    // Creating Hyena objects and assigning names
-    for (int i = 0; i < 5; i++) {
-        std::cout << "Hyena assigned name: " << Hyena::assignName() << std::endl;
-    }
+int main()
+{
+    cout << "Welcome to my zoo!!" << endl;
 
-    // Accessing and displaying the remaining number of hyena names
-    std::cout << "Remaining hyena names: " << Hyena::hyenaNames.size() << std::endl;
+    Animal myNewAnimal01("joker","Hyena");
+
+    cout << " the number of animals is" << Animal::numOfAnimals << endl;
+
+    cout << "the animal name is " << myNewAnimal01.name() << endl;
+    cout << " the animal species is "<< myNewAnimal01.species() << endl;
+
 
     return 0;
 }
